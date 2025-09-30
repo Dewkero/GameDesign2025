@@ -10,6 +10,9 @@ public class Player : MonoBehaviour
     public float input;
     public SpriteRenderer spriteRenderer;
 
+    public bool flippedleft;
+    public bool facingRight;
+
     // Update is called once per frame
     void Update()
     {
@@ -24,6 +27,11 @@ public class Player : MonoBehaviour
         {
             spriteRenderer.flipX = false;
         }
+    }
+
+    void Flip (bool facingRight)
+    {
+
     }
 
     private void FixedUpdate()

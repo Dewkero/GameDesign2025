@@ -148,7 +148,7 @@ Transform:
   m_GameObject: {fileID: 118758200}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.42, y: -3.2, z: 0}
+  m_LocalPosition: {x: 8.8, y: -3.2, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -179,7 +179,7 @@ Transform:
   m_GameObject: {fileID: 126692622}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -12.95, y: -3.2, z: 0}
+  m_LocalPosition: {x: 3.88, y: -3.2, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -309,8 +309,8 @@ Transform:
   m_GameObject: {fileID: 195538094}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.1822, y: -4.7331, z: 0}
-  m_LocalScale: {x: 30.15959, y: 1.4922649, z: 1}
+  m_LocalPosition: {x: -2.7176, y: -6.0952, z: 0}
+  m_LocalScale: {x: 35.229225, y: 4.2163944, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -326,6 +326,7 @@ GameObject:
   - component: {fileID: 519420032}
   - component: {fileID: 519420031}
   - component: {fileID: 519420029}
+  - component: {fileID: 519420033}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -401,12 +402,26 @@ Transform:
   m_GameObject: {fileID: 519420028}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.06224325, y: 1.3, z: -10}
-  m_LocalScale: {x: 1.244865, y: 0.6702862, z: 1}
+  m_LocalPosition: {x: -11.11, y: -2.91, z: -10}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1633504367}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &519420033
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 519420028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a22bfa70160bd1b47a732fd942dad127, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerTransform: {fileID: 1633504367}
+  offset: {x: 0, y: 0, z: -5}
 --- !u!1 &1205807377
 GameObject:
   m_ObjectHideFlags: 0
@@ -486,7 +501,7 @@ Transform:
   m_GameObject: {fileID: 1205807377}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 7.26, y: -3.496, z: 0}
+  m_LocalPosition: {x: -7.29, y: -3.496, z: 0}
   m_LocalScale: {x: 2.5869, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -537,6 +552,37 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.8212508, y: 1}
   m_EdgeRadius: 0
+--- !u!1 &1560390101
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1560390102}
+  m_Layer: 0
+  m_Name: GameObject - Gun
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1560390102
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1560390101}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.89, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1633504367}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1633504362
 GameObject:
   m_ObjectHideFlags: 0
@@ -551,6 +597,7 @@ GameObject:
   - component: {fileID: 1633504364}
   - component: {fileID: 1633504363}
   - component: {fileID: 1633504368}
+  - component: {fileID: 1633504369}
   m_Layer: 0
   m_Name: Square - Player
   m_TagString: Player
@@ -574,6 +621,8 @@ MonoBehaviour:
   speed: 10
   input: 0
   spriteRenderer: {fileID: 1633504366}
+  flippedleft: 0
+  facingRight: 0
 --- !u!50 &1633504364
 Rigidbody2D:
   serializedVersion: 4
@@ -707,11 +756,11 @@ Transform:
   m_GameObject: {fileID: 1633504362}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.05, y: -3.242, z: 0}
+  m_LocalPosition: {x: -11.13, y: -3.242, z: 0}
   m_LocalScale: {x: 0.8033, y: 1.4919, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 519420032}
+  - {fileID: 1560390102}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1633504368
@@ -728,6 +777,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 10
   currentHealth: 0
+--- !u!114 &1633504369
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1633504362}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f66343193ab8804ba3e587ae91e23bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  projectilePrefab: {fileID: 5724414705296196666, guid: 4a7e0daa46baef94abfd5f3a8a1143ea, type: 3}
+  gunPoint: {fileID: 1560390102}
 --- !u!1 &1694747439
 GameObject:
   m_ObjectHideFlags: 0
@@ -744,7 +807,7 @@ GameObject:
   - component: {fileID: 1694747445}
   m_Layer: 0
   m_Name: Square - Ghoul
-  m_TagString: Untagged
+  m_TagString: Ghoul
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -882,7 +945,7 @@ Transform:
   m_GameObject: {fileID: 1694747439}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5.03, y: -3.242, z: 0}
+  m_LocalPosition: {x: 2.37, y: -3.242, z: 0}
   m_LocalScale: {x: 0.8033, y: 1.4919, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -919,10 +982,14 @@ MonoBehaviour:
   - {fileID: 118758201}
   moveSpeed: 2
   patrolDestination: 0
+  playerTransform: {fileID: 1633504367}
+  isChasing: 0
+  chaseDistance: 2
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
+  - {fileID: 519420032}
   - {fileID: 1633504367}
   - {fileID: 1694747443}
   - {fileID: 1205807379}
