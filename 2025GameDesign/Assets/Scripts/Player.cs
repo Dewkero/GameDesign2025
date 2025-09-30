@@ -5,62 +5,29 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    //private Rigidbody rb;
-    //private SpriteRenderer rend;
-
-    public float maxXPosition;
-    public float horizontalMovementSpeed;
-    //private float dirX;
-
-    public KeyCode leftKey;
-    public KeyCode rightKey;
-    //public KeyCode upKey;
-
-   // private bool canHide = false;
-   // private bool Hiding = false;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public Rigidbody2D playerRB;
+    public float speed;
+    public float input;
+    public SpriteRenderer spriteRenderer;
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKey(leftKey) && transform.position.x < maxXPosition)
-        {
-            MoveLeft();
-        }
-        else if (Input.GetKey(rightKey) && transform.position.x > -maxXPosition)
-        {
-            MoveRight();
-        }
+        input = Input.GetAxisRaw("Horizontal");
 
-        void MoveLeft()
+        // flips sprite based on direction, import later
+        if (input < 0)
         {
-            transform.position += Vector3.left * horizontalMovementSpeed;
+            spriteRenderer.flipX = true;
         }
-
-        void MoveRight()
+        else if (input > 0)
         {
-            transform.position += Vector3.right * horizontalMovementSpeed;
+            spriteRenderer.flipX = false;
         }
+    }
 
-        //void OnTriggerEnter2D(Collider2D other)
-        //{
-        //    if (other.gameObject.name.Equals("HideSpot"))
-        //    {
-        //        canHide = true;
-        //    }
-        //}
-
-        //void OnTriggerExit2D(Collider2D other)
-        //{
-        //    if (other.gameObject.name.Equals("HideSpot"))
-        //    {
-        //        canHide = false;
-        //    }
-        //}
+    private void FixedUpdate()
+    {
+        playerRB.velocity = new Vector2(input * speed, playerRB.velocity.y);
     }
 }
