@@ -19,6 +19,8 @@ public class Player : MonoBehaviour
     public bool canHide = false;
     public bool hiding = false;
 
+    public static Player Instance;
+
     // Update is called once per frame
     void Update()
     {

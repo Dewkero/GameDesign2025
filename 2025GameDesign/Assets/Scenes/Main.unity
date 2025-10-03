@@ -561,7 +561,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1560390102}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: GameObject - Gun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -598,7 +598,7 @@ GameObject:
   - component: {fileID: 1633504363}
   - component: {fileID: 1633504368}
   - component: {fileID: 1633504369}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Square - Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -807,7 +807,7 @@ GameObject:
   - component: {fileID: 1694747440}
   - component: {fileID: 1694747444}
   - component: {fileID: 1694747445}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: Square - Ghoul
   m_TagString: Ghoul
   m_Icon: {fileID: 0}
