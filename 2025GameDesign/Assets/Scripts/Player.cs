@@ -46,12 +46,10 @@ public class Player : MonoBehaviour
     {
         if(canHide && Input.GetKey(KeyCode.W))
         {
-            Physics2D.IgnoreLayerCollision(6, 7, true);
             hiding = true; 
         }
         else
         {
-            Physics2D.IgnoreLayerCollision(6, 7, false);
             hiding = false;
         }
 
