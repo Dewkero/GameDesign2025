@@ -1,11 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerHealth : MonoBehaviour
 {
-    public int maxHealth = 10;
-    public int currentHealth;
+    public float maxHealth = 10;
+    public float currentHealth;
+
+    public Image healthBarFill;
+    public GameObject healthBar;
 
     // Start is called before the first frame update
     void Start()
@@ -13,12 +17,18 @@ public class PlayerHealth : MonoBehaviour
         currentHealth = maxHealth;
     }
 
-    public void TakeDamage(int damage)
+    public void TakeDamage(float damage)
     {
         currentHealth -= damage;
+
+        healthBarFill.fillAmount = currentHealth / maxHealth;
+
         if (currentHealth <= 0)
         {
             Destroy(gameObject);
         }
+
+        healthBar.SetActive(true);
+
     }
 }
