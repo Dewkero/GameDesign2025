@@ -5,8 +5,8 @@ using UnityEngine.UI;
 
 public class PlayerHealth : MonoBehaviour
 {
-    public int maxHealth = 10;
-    public int currentHealth;
+    public float maxHealth = 10;
+    public float currentHealth;
 
     public Image healthBarFill;
     public GameObject healthBar;
@@ -17,7 +17,7 @@ public class PlayerHealth : MonoBehaviour
         currentHealth = maxHealth;
     }
 
-    public void TakeDamage(int damage)
+    public void TakeDamage(float damage)
     {
         currentHealth -= damage;
 
