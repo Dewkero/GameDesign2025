@@ -19,17 +19,19 @@ public class Timer : MonoBehaviour
     [SerializeField]
     private TextMeshProUGUI secondSecond;
 
+    private bool timerRunning = false;
 
     // Start is called before the first frame update
     void Start()
     {
         ResetTimer();
+        timerRunning = true;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (timer > 0)
+        if (timerRunning)
         { 
         timer -= Time.deltaTime;
             UpdateTimerDisplay(timer);
@@ -53,4 +55,8 @@ public class Timer : MonoBehaviour
         secondSecond.text = currenTime[3].ToString();
     }
 
+    public void GameOver ()
+    {
+        timerRunning = false;
+    }
 }

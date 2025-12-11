@@ -10,11 +10,14 @@ public class PlayerHealth : MonoBehaviour
 
     public Image healthBarFill;
     public GameObject healthBar;
+    private GameManager gameManager;
+
 
     // Start is called before the first frame update
     void Start()
     {
         currentHealth = maxHealth;
+        gameManager = FindObjectOfType<GameManager>();
     }
 
     public void TakeDamage(float damage)
@@ -25,10 +28,22 @@ public class PlayerHealth : MonoBehaviour
 
         if (currentHealth <= 0)
         {
-            Destroy(gameObject);
+            Die();
         }
 
         healthBar.SetActive(true);
 
+    }
+
+    void Die()
+    {
+        // Handle player death
+        Debug.Log("Player Died!");
+        Destroy(Player.instance);
+        if (gameManager != null)
+        {
+            gameManager.GameOver();
+        }
+        
     }
 }
