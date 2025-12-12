@@ -2167,7 +2167,7 @@ GameObject:
   - component: {fileID: 1205807380}
   m_Layer: 0
   m_Name: Square - Hide
-  m_TagString: Untagged
+  m_TagString: HidingSpot
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3019,8 +3019,9 @@ GameObject:
   - component: {fileID: 1633504365}
   - component: {fileID: 1633504364}
   - component: {fileID: 1633504363}
-  - component: {fileID: 1633504368}
   - component: {fileID: 1633504369}
+  - component: {fileID: 1633504370}
+  - component: {fileID: 1633504371}
   m_Layer: 0
   m_Name: Square - Player
   m_TagString: Player
@@ -3187,22 +3188,6 @@ Transform:
   - {fileID: 277100119}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1633504368
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1633504362}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f13b6bc9695460a43aa318accfae34ed, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxHealth: 10
-  currentHealth: 0
-  healthBarFill: {fileID: 841609564}
-  healthBar: {fileID: 277100115}
 --- !u!114 &1633504369
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3217,6 +3202,37 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectilePrefab: {fileID: 5724414705296196666, guid: 4a7e0daa46baef94abfd5f3a8a1143ea, type: 3}
   gunPoint: {fileID: 1560390102}
+--- !u!114 &1633504370
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1633504362}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ab45f5ae3624e0488a6a503e0092358, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hideDuration: 10
+  hideCooldown: 10
+  isHiding: 0
+--- !u!114 &1633504371
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1633504362}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f13b6bc9695460a43aa318accfae34ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 10
+  currentHealth: 0
+  healthBarFill: {fileID: 841609564}
+  healthBar: {fileID: 1214917562}
 --- !u!1 &1650054193
 GameObject:
   m_ObjectHideFlags: 0

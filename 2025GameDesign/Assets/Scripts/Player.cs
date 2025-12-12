@@ -31,11 +31,6 @@ public class Player : MonoBehaviour
         }
     }
 
-    void Flip (bool facingRight)
-    {
-
-    }
-
     private void FixedUpdate()
     {
         playerRB.velocity = new Vector2(input * speed, playerRB.velocity.y);

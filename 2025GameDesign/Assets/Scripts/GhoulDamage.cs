@@ -11,10 +11,24 @@ public class GhoulDamage : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            PlayerHealth playerHealth = collision.gameObject.GetComponent<PlayerHealth>();
-            if (playerHealth != null)
+            Debug.Log("Ghoul collided with Player.");
+
+            Hide hidePlayer = collision.gameObject.GetComponent<Hide>();
+            if (hidePlayer != null && hidePlayer.isHiding)
             {
+                Debug.Log("Player is hiding, no damage taken.");
+                return;
+            }
+
+            PlayerHealth playerHealth = collision.gameObject.GetComponent<PlayerHealth>();
+            if (playerHealth != null && playerHealth.enabled)
+            {
+                Debug.Log("Player takes dmg");
                 playerHealth.TakeDamage(damage);
+            }
+            else
+            {
+                Debug.Log("PlayerHealth component not found or disabled.");
             }
         }
     }

@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Ghoul
   - Wall
+  - HidingSpot
   layers:
   - Default
   - TransparentFX
