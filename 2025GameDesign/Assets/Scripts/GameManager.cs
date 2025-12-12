@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     [SerializeField] GameObject deathPanel;
+    [SerializeField] GameObject winPanel;
     // Start is called before the first frame update
     void Start()
     {
@@ -20,6 +21,15 @@ public class GameManager : MonoBehaviour
         if (deathPanel != null)
         {
             deathPanel.SetActive(true);
+            Time.timeScale = 0f; // Pause the game
+        }
+    }
+
+    public void YouWin()
+    {
+        if (winPanel != null)
+        {
+            winPanel.SetActive(true);
             Time.timeScale = 0f; // Pause the game
         }
     }

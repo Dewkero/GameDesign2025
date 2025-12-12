@@ -18,12 +18,20 @@ public class Timer : MonoBehaviour
     private TextMeshProUGUI firstSecond;
     [SerializeField]
     private TextMeshProUGUI secondSecond;
+    [SerializeField]
+    private GameManager gameManager;
 
     private bool timerRunning = false;
+    private bool timesUp = false;
 
     // Start is called before the first frame update
     void Start()
     {
+        if (gameManager == null)
+        {
+            gameManager = FindObjectOfType<GameManager>();
+        }
+
         ResetTimer();
         timerRunning = true;
     }
@@ -31,11 +39,22 @@ public class Timer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (timerRunning)
+        if (!timerRunning) return;
         { 
         timer -= Time.deltaTime;
-            UpdateTimerDisplay(timer);
         }
+        if (timer<= 0f)
+        {
+            timer = 0f;
+            timerRunning = false;
+
+            if (!timesUp)
+            {
+                YouWin();
+            }
+        }
+
+        UpdateTimerDisplay(timer);
     }
 
     private void ResetTimer()
@@ -53,6 +72,12 @@ public class Timer : MonoBehaviour
         secondMinute.text = currenTime[1].ToString();
         firstSecond.text = currenTime[2].ToString();
         secondSecond.text = currenTime[3].ToString();
+    }
+
+    private void YouWin()
+    {
+        timesUp = true;
+        gameManager.YouWin();
     }
 
     public void GameOver ()
