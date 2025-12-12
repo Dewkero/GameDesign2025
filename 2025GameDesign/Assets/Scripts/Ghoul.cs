@@ -1,55 +1,103 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 
 public class Ghoul : MonoBehaviour
 {
-    public Transform[] patrolPoints;
     public float moveSpeed;
-    public int patrolDestination;
 
     public Transform playerTransform;
-    public bool isChasing;
+    public bool isChasing = false;
     public float chaseDistance;
 
-    // Update is called once per frame
-    void Update()
+    private float direction = 1f;
+    private float changeDirectionTime = 0f;
+
+    private SpriteRenderer spriteRenderer;
+
+    private void Start()
     {
-        if (isChasing)
+        spriteRenderer = GetComponent<SpriteRenderer>();
+
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        if (player != null)
         {
-            if(transform.position.x > playerTransform.position.x)
-            {
-                transform.position += Vector3.left * moveSpeed * Time.deltaTime;
-            }
-            if (transform.position.x < playerTransform.position.x)
-            {
-                transform.position += Vector3.right * moveSpeed * Time.deltaTime;
-            }
+            playerTransform = player.transform;
         }
         else
         {
-            if(Vector2.Distance(transform.position, playerTransform.position) < chaseDistance)
+            Debug.LogWarning("Player not found");
+        }
+
+        GameObject[] ghouls = GameObject.FindGameObjectsWithTag("Ghoul");
+        foreach (GameObject g in ghouls)
+        {
+            if (g != gameObject)
             {
-                isChasing = true;
+                Physics2D.IgnoreCollision(g.GetComponent<Collider2D>(), GetComponent<Collider2D>());
+            }
+        }
+
+        changeDirectionTime = Time.time + Random.Range(1f, 3f);
+        direction = Random.value >0.5f ? 1f : -1f;
+    }
+    void Update()
+    {
+        if (playerTransform == null) return;
+
+        if (!isChasing && Vector2.Distance(transform.position, playerTransform.position) < chaseDistance)
+        {
+            isChasing = true;
+        }
+
+        if (isChasing)
+        {
+            ChasePlayer();
+        }
+        else
+        {
+            Wander();
+        }
+
+        FlipSprite();
+
+        void ChasePlayer()
+        {
+            Vector3 direction = (playerTransform.position - transform.position).normalized;
+            transform.position += new Vector3(direction.x, 0, 0) * moveSpeed * Time.deltaTime;
+        }
+
+        void Wander()
+        {
+            if (Time.time > changeDirectionTime)
+            {
+                direction = Random.value > 0.5f ? 1f : -1f;
+                changeDirectionTime = Time.time + Random.Range(2f, 4f);
             }
 
-            if (patrolDestination == 0)
-            {
-                transform.position = Vector2.MoveTowards(transform.position, patrolPoints[0].position, moveSpeed * Time.deltaTime);
-                if (Vector2.Distance(transform.position, patrolPoints[0].position) < 0.2f)
-                {
-                    patrolDestination = 1;
-                }
-            }
+            //left or right
+            transform.position += new Vector3(direction, 0, 0) * moveSpeed * Time.deltaTime;
+        }
 
-            if (patrolDestination == 1)
+        void FlipSprite()
+        {
+            if (direction > 0)
             {
-                transform.position = Vector2.MoveTowards(transform.position, patrolPoints[1].position, moveSpeed * Time.deltaTime);
-                if (Vector2.Distance(transform.position, patrolPoints[1].position) < 0.2f)
-                {
-                    patrolDestination = 0;
-                }
+                spriteRenderer.flipX = false;
             }
+            else if (direction < 0)
+            {
+                spriteRenderer.flipX = true;
+            }
+        }
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Wall"))
+        {
+            direction *= -1f;
         }
     }
 }

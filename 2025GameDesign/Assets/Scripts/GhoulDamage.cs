@@ -6,13 +6,16 @@ public class GhoulDamage : MonoBehaviour
 {
 
     public int damage;
-    public PlayerHealth playerhealth;
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.gameObject.tag == "Player")
+        if (collision.gameObject.CompareTag("Player"))
         {
-            playerhealth.TakeDamage(damage);
+            PlayerHealth playerHealth = collision.gameObject.GetComponent<PlayerHealth>();
+            if (playerHealth != null)
+            {
+                playerHealth.TakeDamage(damage);
+            }
         }
     }
 }
