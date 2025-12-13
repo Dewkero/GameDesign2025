@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
 public class Hide : MonoBehaviour
 {
@@ -20,6 +22,10 @@ public class Hide : MonoBehaviour
 
     private bool isInHidingSpot = false;
 
+    public TMP_Text feedbackText;
+    private float feedbackDuration = 2f;
+    private float feedbackTimer = 0f;
+
     void Start()
     {
         playerScript = GetComponent<Player>();
@@ -37,7 +43,7 @@ public class Hide : MonoBehaviour
             if (cooldownTimer <= 0f)
             {
                 canHide = true;
-                Debug.Log("Cooldown ended. You can now hide again.");
+                ShowFeedback("You feel your breath return.");
             }
         }
 
@@ -48,6 +54,7 @@ public class Hide : MonoBehaviour
             if (hideTimer <= 0f)
             {
                 ExitHide();
+                ShowFeedback("You feel yourself run out of breath.");
             }
         }
 
@@ -61,6 +68,17 @@ public class Hide : MonoBehaviour
         {
             ExitHide();
         }
+
+        if (feedbackText != null && feedbackText.gameObject.activeSelf)
+        {
+            feedbackTimer -= Time.deltaTime;
+            if (feedbackTimer <= 0f)
+            {
+                StartCoroutine(FadeOutText());
+
+            }
+        }
+
     }
 
     private void EnterHide()
@@ -97,6 +115,7 @@ public class Hide : MonoBehaviour
         //hide health bar
         if (playerHealth != null && playerHealth.healthBar != null)
         {
+            playerHealth.healthBarFill.gameObject.SetActive(false);
             playerHealth.healthBar.SetActive(false);
         }
 
@@ -123,7 +142,57 @@ public class Hide : MonoBehaviour
         if (playerHealth != null && playerHealth.healthBar != null)
         {
             playerHealth.healthBar.SetActive(true);
+            playerHealth.healthBarFill.gameObject.SetActive(true);
         }
+    }
+
+    private void ShowFeedback(string message)
+    {
+        if (feedbackText != null)
+        {
+            feedbackText.text = message;
+            feedbackText.gameObject.SetActive(true);
+            feedbackText.alpha = 0f;
+
+            StartCoroutine(FadeInText());
+            feedbackTimer = feedbackDuration;
+        }
+    }
+    private IEnumerator FadeInText()
+    {
+        float fadeDuration = 0.5f;
+        float elapsedTime = 0f;
+
+        // fade in
+        while (elapsedTime < fadeDuration)
+        {
+            feedbackText.alpha = Mathf.Lerp(0f, 1f, elapsedTime / fadeDuration);
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+
+        feedbackText.alpha = 1f; // 100%
+
+        yield return new WaitForSeconds(feedbackDuration); 
+
+        StartCoroutine(FadeOutText()); // fade out
+    }
+
+    private IEnumerator FadeOutText()
+    {
+        float fadeDuration = 0.5f;
+        float elapsedTime = 0f;
+
+        // fade out
+        while (elapsedTime < fadeDuration)
+        {
+            feedbackText.alpha = Mathf.Lerp(1f, 0f, elapsedTime / fadeDuration);
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+
+        feedbackText.alpha = 0f; // Ensure fully transparent
+        feedbackText.gameObject.SetActive(false); // Hide it once fully faded out
     }
 
     // Detect if the player enters a hiding spot
