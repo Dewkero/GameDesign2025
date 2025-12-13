@@ -31,6 +31,12 @@ public class Gun : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //skip shoot if hide
+        if (player != null && player.GetComponent<Hide>() != null && player.GetComponent<Hide>().isHiding)
+        {
+            return;
+        }
+
         if (shootCounter > 0f)
         {
             shootCounter -= Time.deltaTime;

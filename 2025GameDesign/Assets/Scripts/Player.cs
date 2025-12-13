@@ -17,9 +17,23 @@ public class Player : MonoBehaviour
     public bool flippedLeft;
     public bool facingRight = true;
 
+    private Hide hideScript;
+
+    private void Start()
+    {
+        hideScript = GetComponent<Hide>();
+    }
+
     // Update is called once per frame
     void Update()
     {
+        //stop move when hide
+        if (hideScript != null && hideScript.isHiding)
+        {
+            anim.SetFloat("horizontal", 0);
+            return;
+        }
+
         input = Input.GetAxisRaw("Horizontal");
 
         anim.SetFloat("horizontal", Mathf.Abs(input));
@@ -41,21 +55,12 @@ public class Player : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (hideScript != null && hideScript.isHiding)
+        {
+            playerRB.velocity = Vector2.zero;
+            return;
+        }
+
         playerRB.velocity = new Vector2(input * speed, playerRB.velocity.y);
     }
-
-    //void Flip (bool facingRight)
-    //{
-    //    if(flippedLeft && facingRight)
-    //    {
-    //        transform.Rotate(0f, 180f, 0f);
-    //        flippedLeft = false;
-    //    }
-
-    //    if (!flippedLeft && !facingRight)
-    //    {
-    //        transform.Rotate(0f, -180f, 0f);
-    //        flippedLeft = true;
-    //    }
-    //}
 }
