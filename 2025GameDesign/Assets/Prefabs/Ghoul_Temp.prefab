@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 4634351067962690124}
   - component: {fileID: 2977270493104286695}
   - component: {fileID: -4000899090698597388}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Ghoul_Temp
   m_TagString: Ghoul
   m_Icon: {fileID: 0}

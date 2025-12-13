@@ -11,6 +11,12 @@ public class GhoulDamage : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
+            Hide hideScript = collision.gameObject.GetComponent<Hide>();
+            if (hideScript != null && hideScript.isHiding)
+            {
+                return;
+            }
+
             PlayerHealth playerHealth = collision.gameObject.GetComponent<PlayerHealth>();
             if (playerHealth != null)
             {

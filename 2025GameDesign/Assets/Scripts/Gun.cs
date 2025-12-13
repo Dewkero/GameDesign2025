@@ -15,9 +15,18 @@ public class Gun : MonoBehaviour
 
     private Vector3 originalLocalScale;
 
+    private Hide hideScript;
+
     // Start is called before the first frame update
     void Start()
     {
+
+        hideScript = GetComponentInParent<Hide>();
+        if (hideScript == null)
+        {
+            Debug.LogError("Can't find Hide script in parent");
+        }
+
         player = GetComponentInParent<Player>();
         if (player == null)
         {
@@ -31,6 +40,11 @@ public class Gun : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (hideScript != null && hideScript.isHiding)
+        {
+            return; // Do not allow shooting while hiding
+        }
+
         if (shootCounter > 0f)
         {
             shootCounter -= Time.deltaTime;

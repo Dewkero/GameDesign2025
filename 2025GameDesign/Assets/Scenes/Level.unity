@@ -134,7 +134,7 @@ GameObject:
   - component: {fileID: 273803}
   - component: {fileID: 273805}
   - component: {fileID: 273804}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: BACK TO MENU - Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -268,7 +268,7 @@ GameObject:
   - component: {fileID: 105674115}
   - component: {fileID: 105674117}
   - component: {fileID: 105674116}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Minute1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -533,7 +533,7 @@ GameObject:
   - component: {fileID: 275255347}
   - component: {fileID: 275255346}
   - component: {fileID: 275255345}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: BTM - Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -667,7 +667,7 @@ GameObject:
   - component: {fileID: 277100117}
   - component: {fileID: 277100116}
   - component: {fileID: 277100120}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -862,7 +862,7 @@ GameObject:
   - component: {fileID: 345685213}
   - component: {fileID: 345685215}
   - component: {fileID: 345685214}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Seperator
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -997,7 +997,7 @@ GameObject:
   - component: {fileID: 491150336}
   - component: {fileID: 491150335}
   - component: {fileID: 491150334}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Retry - Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1236,7 +1236,7 @@ GameObject:
   - component: {fileID: 564292253}
   - component: {fileID: 564292255}
   - component: {fileID: 564292254}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: You Died
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1370,7 +1370,7 @@ GameObject:
   - component: {fileID: 567739711}
   - component: {fileID: 567739713}
   - component: {fileID: 567739712}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: BACK TO MENU - Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1523,8 +1523,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyPrefab: {fileID: 6637271094455057636, guid: 92786c784b7229a4eae91e0a70ed926d, type: 3}
-  maxEnemies: 20
-  spawnInterval: 2
+  maxEnemies: 15
+  spawnInterval: 1
   useSpawnPoints: 1
   spawnPoints:
   - {fileID: 1752927115}
@@ -1556,7 +1556,7 @@ GameObject:
   - component: {fileID: 706270381}
   - component: {fileID: 706270383}
   - component: {fileID: 706270382}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Minute2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1691,7 +1691,7 @@ GameObject:
   - component: {fileID: 832515732}
   - component: {fileID: 832515731}
   - component: {fileID: 832515730}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: BTM - Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1823,7 +1823,7 @@ GameObject:
   - component: {fileID: 841609563}
   - component: {fileID: 841609565}
   - component: {fileID: 841609564}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Health Bar Fill
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -1846,7 +1846,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -150.7}
+  m_AnchoredPosition: {x: 0, y: -121.24}
   m_SizeDelta: {x: 124.1, y: 29.2}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &841609564
@@ -1899,7 +1899,7 @@ GameObject:
   - component: {fileID: 944072291}
   - component: {fileID: 944072290}
   - component: {fileID: 944072289}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Retry - Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2031,7 +2031,7 @@ GameObject:
   - component: {fileID: 1007639972}
   - component: {fileID: 1007639974}
   - component: {fileID: 1007639973}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: You Died
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2167,7 +2167,7 @@ GameObject:
   - component: {fileID: 1205807380}
   m_Layer: 0
   m_Name: Square - Hide
-  m_TagString: Untagged
+  m_TagString: HidingSpot
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2271,7 +2271,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.0035751313, y: 0}
+  m_Offset: {x: -0.010135785, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -2282,7 +2282,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.8212508, y: 1}
+  m_Size: {x: 0.9655857, y: 1}
   m_EdgeRadius: 0
 --- !u!1 &1214917562
 GameObject:
@@ -2295,7 +2295,7 @@ GameObject:
   - component: {fileID: 1214917563}
   - component: {fileID: 1214917565}
   - component: {fileID: 1214917564}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Health Bar
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -2318,7 +2318,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -150.7}
+  m_AnchoredPosition: {x: 0, y: -121.24}
   m_SizeDelta: {x: 124.1, y: 29.2}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1214917564
@@ -2370,7 +2370,7 @@ GameObject:
   - component: {fileID: 1255163697}
   - component: {fileID: 1255163699}
   - component: {fileID: 1255163698}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: 'RETRY -Text '
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2634,7 +2634,7 @@ GameObject:
   - component: {fileID: 1385391032}
   - component: {fileID: 1385391034}
   - component: {fileID: 1385391033}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: 'REPLAY -Text '
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2768,7 +2768,7 @@ GameObject:
   - component: {fileID: 1475454286}
   - component: {fileID: 1475454288}
   - component: {fileID: 1475454287}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Second1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2900,7 +2900,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1560390102}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: GameObject - Gun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3022,7 +3022,8 @@ GameObject:
   - component: {fileID: 1633504368}
   - component: {fileID: 1633504369}
   - component: {fileID: 1633504370}
-  m_Layer: 0
+  - component: {fileID: 1633504372}
+  m_Layer: 6
   m_Name: Square - Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -3174,7 +3175,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectilePrefab: {fileID: 5724414705296196666, guid: 4a7e0daa46baef94abfd5f3a8a1143ea, type: 3}
   gunPoint: {fileID: 1560390102}
-  shootTime: 1
+  shootTime: 2
   shootCounter: 0
   anim: {fileID: 1633504370}
   player: {fileID: 0}
@@ -3244,6 +3245,21 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.20986561, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &1633504372
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1633504362}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ab45f5ae3624e0488a6a503e0092358, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hideDuration: 5
+  hideCooldown: 10
+  isHiding: 0
 --- !u!1 &1650054193
 GameObject:
   m_ObjectHideFlags: 0
@@ -3255,7 +3271,7 @@ GameObject:
   - component: {fileID: 1650054194}
   - component: {fileID: 1650054196}
   - component: {fileID: 1650054195}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Second 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3498,7 +3514,7 @@ GameObject:
   - component: {fileID: 1906044915}
   - component: {fileID: 1906044914}
   - component: {fileID: 1906044913}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Death Panel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3666,7 +3682,7 @@ GameObject:
   - component: {fileID: 1957433120}
   - component: {fileID: 1957433119}
   - component: {fileID: 1957433118}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Win Panel
   m_TagString: Untagged
   m_Icon: {fileID: 0}

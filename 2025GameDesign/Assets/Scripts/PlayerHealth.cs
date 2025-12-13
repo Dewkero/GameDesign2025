@@ -12,16 +12,24 @@ public class PlayerHealth : MonoBehaviour
     public GameObject healthBar;
     private GameManager gameManager;
 
+    private Hide hideScript;
 
     // Start is called before the first frame update
     void Start()
     {
+        hideScript = GetComponent<Hide>();
+
         currentHealth = maxHealth;
         gameManager = FindObjectOfType<GameManager>();
     }
 
     public void TakeDamage(float damage)
     {
+        if(hideScript != null && hideScript.isHiding)
+        {
+            return;
+        }
+
         currentHealth -= damage;
 
         healthBarFill.fillAmount = currentHealth / maxHealth;

@@ -16,6 +16,8 @@ public class Ghoul : MonoBehaviour
 
     private SpriteRenderer spriteRenderer;
 
+    private Hide playerHide;
+
     private void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
@@ -24,6 +26,7 @@ public class Ghoul : MonoBehaviour
         if (player != null)
         {
             playerTransform = player.transform;
+            playerHide = player.GetComponent<Hide>();
         }
         else
         {
@@ -45,6 +48,14 @@ public class Ghoul : MonoBehaviour
     void Update()
     {
         if (playerTransform == null) return;
+
+        if (playerHide != null && playerHide.isHiding)
+        {
+            isChasing = false;
+            Wander();
+            FlipSprite();
+            return;
+        }
 
         if (!isChasing && Vector2.Distance(transform.position, playerTransform.position) < chaseDistance)
         {
