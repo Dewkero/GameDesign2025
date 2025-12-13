@@ -10,10 +10,19 @@ public class Projectile : MonoBehaviour
     public float projectileTime;
     public float projectileCounter;
 
+    public bool facingRight = true;
+
     // Start is called before the first frame update
     void Start()
     {
         projectileCounter = projectileTime;
+     
+        if (!facingRight)
+        {
+            transform.rotation = Quaternion.Euler(0f, 180f, 0f);
+        }
+
+        projectileRB.velocity = new Vector2(facingRight ? speed : -speed, 0f);
     }
 
     // Update is called once per frame
@@ -25,12 +34,6 @@ public class Projectile : MonoBehaviour
             Destroy(gameObject);
         }
     }
-
-    private void FixedUpdate()
-    {
-        projectileRB.velocity = new Vector2(speed, projectileRB.velocity.y);
-    }
-
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if(collision.gameObject.tag == "Ghoul")
