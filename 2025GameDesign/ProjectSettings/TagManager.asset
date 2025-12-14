@@ -17,7 +17,7 @@ TagManager:
   - Player
   - Ghoul
   - Hidden Player
-  - 
+  - Hiding Spot
   - 
   - 
   - 
@@ -43,4 +43,16 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: HidingSpot
+    uniqueID: 1462097691
+    locked: 0
+  - name: Enemy
+    uniqueID: 3939715477
+    locked: 0
+  - name: Spawn
+    uniqueID: 1575011381
+    locked: 0
+  - name: Player
+    uniqueID: 1249285025
     locked: 0

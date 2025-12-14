@@ -22,6 +22,8 @@ public class Hide : MonoBehaviour
 
     private bool isInHidingSpot = false;
 
+    public TMP_Text exclamationText;
+
     public TMP_Text feedbackText;
     private float feedbackDuration = 2f;
     private float feedbackTimer = 0f;
@@ -32,6 +34,12 @@ public class Hide : MonoBehaviour
         playerHealth = GetComponent<PlayerHealth>();
         playerCollider = GetComponent<Collider2D>();
         playerRB = GetComponent<Rigidbody2D>();
+
+        if (exclamationText != null)
+        {
+            exclamationText.text = "!";
+            exclamationText.alpha = 0f;
+        }
     }
 
     void Update()
@@ -40,11 +48,26 @@ public class Hide : MonoBehaviour
         if (!canHide)
         {
             cooldownTimer -= Time.deltaTime;
+
             if (cooldownTimer <= 0f)
             {
                 canHide = true;
                 ShowFeedback("You feel your breath return.");
+
+                if (isInHidingSpot && exclamationText != null)
+                {
+                    exclamationText.alpha = 1f;
+                }
             }
+
+            else
+            {
+                if (exclamationText != null)
+                {
+                    exclamationText.alpha = 0f;
+                }
+            }
+
         }
 
         // Update hide timer
@@ -77,6 +100,11 @@ public class Hide : MonoBehaviour
                 StartCoroutine(FadeOutText());
 
             }
+        }
+
+        if (isInHidingSpot && exclamationText != null && exclamationText.alpha ==1f)
+        {
+           StartCoroutine(FadeOutExclamation());
         }
 
     }
@@ -117,6 +145,11 @@ public class Hide : MonoBehaviour
         {
             playerHealth.healthBarFill.gameObject.SetActive(false);
             playerHealth.healthBar.SetActive(false);
+        }
+
+        if (exclamationText != null)
+        {
+            exclamationText.alpha = 0f;
         }
 
     }
@@ -195,6 +228,26 @@ public class Hide : MonoBehaviour
         feedbackText.gameObject.SetActive(false); // Hide it once fully faded out
     }
 
+    private IEnumerator FadeOutExclamation()
+    {
+        float fadeDuration = 0.5f;
+        float elapsedTime = 0f;
+        // fade out
+        while (elapsedTime < fadeDuration)
+        {
+            exclamationText.alpha = Mathf.Lerp(1f, 0f, elapsedTime / fadeDuration);
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+        exclamationText.alpha = 0f;
+    }
+
+    private IEnumerator StayVisiibleAndFadeOut()
+    {
+        yield return new WaitForSeconds(1f);
+        StartCoroutine(FadeOutExclamation());
+    }
+
     // Detect if the player enters a hiding spot
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -203,6 +256,11 @@ public class Hide : MonoBehaviour
             hidingSpot = collision;
             isInHidingSpot = true;
             Debug.Log("Entered hiding spot: " + collision.name);
+
+            if (exclamationText != null)
+            {
+                exclamationText.alpha = 1f;
+            }
         }
     }
 
@@ -214,6 +272,11 @@ public class Hide : MonoBehaviour
             hidingSpot = null;
             isInHidingSpot = false;
             Debug.Log("Exited hiding spot: " + collision.name);
+
+            if (exclamationText != null)
+            {
+                exclamationText.alpha = 0f;
+            }
 
             if (isHiding)
             {
