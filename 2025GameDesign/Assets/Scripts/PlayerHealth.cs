@@ -14,6 +14,9 @@ public class PlayerHealth : MonoBehaviour
 
     private Hide hideScript;
 
+    public AudioSource dmgSound;
+    public AudioClip dmgClip;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -25,6 +28,11 @@ public class PlayerHealth : MonoBehaviour
 
     public void TakeDamage(float damage)
     {
+        if (dmgSound != null && dmgClip != null)
+        {
+            dmgSound.PlayOneShot(dmgClip);
+        }
+
         if(hideScript != null && hideScript.isHiding)
         {
             return;

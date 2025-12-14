@@ -17,6 +17,9 @@ public class Gun : MonoBehaviour
 
     private Hide hideScript;
 
+    public AudioSource shot;
+    public AudioClip shotClip;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -63,6 +66,11 @@ public class Gun : MonoBehaviour
 
     void Shoot ()
     {
+        if (shot != null && shotClip != null)
+        {
+            shot.PlayOneShot(shotClip);
+        }
+
         GameObject bullet = Instantiate(projectilePrefab, gunPoint.position, Quaternion.identity);
 
         Projectile projectile = bullet.GetComponent<Projectile>();

@@ -19,6 +19,12 @@ public class Player : MonoBehaviour
 
     private Hide hideScript;
 
+    public AudioSource footstepSound;
+    public AudioClip footstepClip;
+
+    private bool isMoving = false;
+    private bool isWalkingSoundPlaying = false;
+
     private void Start()
     {
         hideScript = GetComponent<Hide>();
@@ -27,7 +33,29 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(hideScript != null && hideScript.isHiding)
+        bool moving = Mathf.Abs(Input.GetAxis("Horizontal")) > 0.1f;
+
+        if (moving && !isWalkingSoundPlaying) 
+        { 
+            if (footstepSound != null && footstepClip != null)
+            {
+                footstepSound.clip = footstepClip;
+                footstepSound.loop = true;
+                footstepSound.Play();
+                isWalkingSoundPlaying = true;
+            }
+        }
+
+        else if (!moving && isWalkingSoundPlaying) 
+        { 
+            if (footstepSound != null)
+            {
+                footstepSound.Stop();
+                isWalkingSoundPlaying = false;
+            }
+        }
+
+        if (hideScript != null && hideScript.isHiding)
         {
             anim.SetFloat("horizontal", 0);
             return; // Skip movement and animation updates while hiding
